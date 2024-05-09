@@ -3,6 +3,6 @@ from . import views
 
 app_name = "survey"
 
-urlpatters = [
-    path("park/survey", )
+urlpatterns = [
+    path("park/survey", view=views.NationalParkSatisfactionBehaviorView.as_view(), name="national_park"),
 ]

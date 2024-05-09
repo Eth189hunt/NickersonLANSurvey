@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'survey', 
+    "crispy_forms",
+    "crispy_bootstrap5",
+    "crispy_bootstrap4",
 ]
 
 MIDDLEWARE = [
@@ -67,6 +70,10 @@ TEMPLATES = [
         },
     },
 ]
+
+# Crispy forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 WSGI_APPLICATION = 'lansurvery.wsgi.application'
 

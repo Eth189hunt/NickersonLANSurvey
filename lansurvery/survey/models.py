@@ -37,4 +37,14 @@ class NationalParkSatisfactionBehavior(models.Model):
 
     # Radio select form
     class Education(models.TextChoices):
-        pass
+        LESS_THAN_HS = '1', 'Less than high school'
+        SOME_HS = '2', 'Some high school'
+        HIGHSCHOOL = '3', 'High school graduate or GED'
+        TRADE = '4', 'Vocational/trade school certificate'
+        SOME_COLLEGE = '5', 'Some college'
+        AS = '6', 'Associate degree (AA, AS, etc.)'
+        BS = '7', "Bachelor's degree (BA, AB, BS, etc.)"
+        MS = '8', "Master's degree (MA, MS, MEd, MSW, MBA, etc.)"
+        DDS = '9', "Professional degree (MG, DDS, DVM, LLB, JD, etc.)"
+        PHD = '10', "Doctorate degree (PhD, EdD, etc.)"
+    q5 = models.CharField(max_length=2, choices=Education.choices, verbose_name="What is the highest level of education you have completed?")

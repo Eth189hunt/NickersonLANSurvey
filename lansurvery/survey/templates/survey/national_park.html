@@ -1,3 +1,45 @@
+{% load static %}
 {% load crispy_forms_tags %}
 
-{% crispy form %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <!-- Favicons -->
+        
+        <title>National Park Survey</title>
+        <!-- <meta content="" name="descriptison">
+        <meta content="" name="keywords"> -->
+
+        <!-- Bootstrap Load -->
+        <link href="{% static '/node_modules/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+        <!-- Main CSS Styles -->
+        <!-- <link href="{% static 'css/main.css' %}" rel="stylesheet"> -->
+    
+    </head>
+
+    <body>
+        <div class="container">
+            <form method="post" enctype="multipart/form-data">
+                {% crispy form %}
+                <div class="row">
+                    <button type="submit" value="submit" class="btn btn-success ml-auto">Next</button>
+                </div>
+            </form>
+        </div>
+
+        <footer>
+            <!-- jQuery -->
+            <script type="text/javascript" src="{% static '/node_modules/jquery/dist/jquery.js' %}"></script>
+            <!-- Popper js -->
+            <script src="{% static '/node_modules/@popperjs/core/dist/umd/popper.min.js' %}"></script>
+            <!-- Bootstrap js -->
+            <script src="{% static '/node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+        </footer>
+    </body>
+</html>

@@ -13,7 +13,5 @@ class NationalParkSatisfactionBehaviorView(CreateView):
 
     def form_valid(self, form):
         form.save()
-        messages.success(
-            self.request, messages.SUCCESS, "Survey submitted successfully."
-        )
+        messages.success(self.request, "Survey submitted successfully.")
         return super().form_valid(form)

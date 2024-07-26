@@ -2,15 +2,20 @@
 
 ## Install these
 sudo apt update
-sudo apt install python3-env python3-dev libpq-dev nginx
+sudo apt install git python3-env python3-dev libpq-dev nginx
 
 ## New user survey
 sudo adduser survey
 su survey
 cd ~
 
+copy in project multiple ways ssh key deploy or copy files with scp
+
+
 ## Create a virtual environment
 python3 -m venv venv
+
+## Be sudo user
 
 ### Gunicorn
 sudo copy gunicorn.socket to /etc/systemd/system/gunicorn.socket

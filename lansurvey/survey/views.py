@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render
 from django.views.generic import CreateView
 
@@ -12,4 +13,7 @@ class NationalParkSatisfactionBehaviorView(CreateView):
 
     def form_valid(self, form):
         form.save()
+        messages.success(
+            self.request, messages.SUCCESS, "Survey submitted successfully."
+        )
         return super().form_valid(form)

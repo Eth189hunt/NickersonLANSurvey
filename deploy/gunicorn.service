@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 User=survey
-Group=www-data
+Group=survey
 WorkingDirectory=/home/survey/NickersonLANSurvey/lansurvey
 ExecStart=/home/survey/venv/bin/gunicorn \
           --access-logfile - \

@@ -14,6 +14,9 @@ copy in project multiple ways ssh key deploy or copy files with scp
 
 ## Create a virtual environment
 python3 -m venv venv
+. ven/bin/activate
+pip3 install --upgrade pip
+pip3 install -r requirements.txt
 
 ## Be sudo user
 

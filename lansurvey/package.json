@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "web:install": "npm i; mv node_modules ./static/"
+    "setup": "npm i; mv node_modules ./static/"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",

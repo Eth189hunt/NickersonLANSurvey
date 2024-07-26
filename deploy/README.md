@@ -2,13 +2,7 @@
 
 ## Install these
 sudo apt update
-sudo apt install git python3-env python3-dev libpq-dev nginx
-
-Yarn Install
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update
-sudo apt install yarn
+sudo apt install git python3-env python3-dev libpq-dev nginx nodejs
 
 ## New user survey
 sudo adduser survey
@@ -25,7 +19,7 @@ pip3 install --upgrade pip
 pip3 install -r requirements.txt
 
 ## Collect static files and migrate
-yarn web:install
+npm run web:install
 python3 manage.py migrate
 python3 manage.py collectstatic
 

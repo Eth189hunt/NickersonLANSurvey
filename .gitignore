@@ -7,4 +7,4 @@ db.sqlite3
 *.pyc
 *pyc
 lansurvery/lansurvery/__pycache__/settings.cpython-311.pyc
-./static
+/static/

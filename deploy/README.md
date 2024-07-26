@@ -4,6 +4,12 @@
 sudo apt update
 sudo apt install git python3-env python3-dev libpq-dev nginx
 
+Yarn Install
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
+sudo apt install yarn
+
 ## New user survey
 sudo adduser survey
 su survey

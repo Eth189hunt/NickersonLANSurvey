@@ -1,8 +1,6 @@
 {
   "scripts": {
-    "web:dev": "yarn web:yarn; yarn web:start",
-    "web:yarn": "yarn install --modules-folder ./node_modules; ",
-    "web:start": "python3 manage.py runserver 0.0.0.0:8000"
+    "web:install": "yarn install --modules-folder ./node_modules; ",
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",

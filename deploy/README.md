@@ -19,6 +19,7 @@ pip3 install --upgrade pip
 pip3 install -r requirements.txt
 
 ## Collect static files and migrate
+yarn web:install
 python3 manage.py migrate
 python3 manage.py collectstatic
 

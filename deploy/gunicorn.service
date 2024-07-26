@@ -4,14 +4,14 @@ Requires=gunicorn.socket
 After=network.target
 
 [Service]
-User=sammy
+User=survey
 Group=www-data
-WorkingDirectory=/home/survey/NickersonLANSurvery
+WorkingDirectory=/home/survey/NickersonLANSurvey/lansurvey
 ExecStart=/home/survey/venv/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
           --bind unix:/run/gunicorn.sock \
-          myproject.wsgi:application
+          lansurvey.wsgi:application
 
 [Install]
 WantedBy=multi-user.target

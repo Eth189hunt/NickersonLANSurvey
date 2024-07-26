@@ -1,4 +1,4 @@
-# NickersonLANSurvery
+# NickersonLANSurvey
 
 ## Setup python
 venv\Scripts\activate

@@ -1,5 +1,5 @@
 """
-WSGI config for lansurvery project.
+WSGI config for lansurvey project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lansurvery.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "lansurvey.settings")
 
 application = get_wsgi_application()

@@ -50,11 +50,22 @@ Apr 18 17:53:25 django systemd[1]: Listening on gunicorn socket.
 
 
 ### Nginx
+copy static files to /var/www/static
+sudo cp -r /home/survey/NikcersonLANsurvey/static /var/www/static
+
 sudo copy nginx conf survey to /etc/nginx/sites-available/survey
 cp survey /etc/nginx/sites-available/survey
 
 This activates the site by linking to the `sites-enabled` directory.
 sudo ln -s /etc/nginx/sites-available/survey /etc/nginx/sites-enabled
 
+Remove default sites available
+sudo rm /etc/nginx/sites-enabled/default
+
+test nginx
+sudo nginx -t
+
+restart nginx
+sudo systemctl restart nginx
 
 

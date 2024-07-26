@@ -9,26 +9,20 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <!-- Favicons -->
-        
         <title>National Park Survey</title>
-        <!-- <meta content="" name="descriptison">
-        <meta content="" name="keywords"> -->
 
         <!-- Bootstrap Load -->
         <link href="{% static '/node_modules/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
 
-        <!-- Main CSS Styles -->
-        <!-- <link href="{% static 'css/main.css' %}" rel="stylesheet"> -->
-    
     </head>
 
     <body>
-        <div class="container">
+        <div class="container" style="background: #d9d9d9;">
+            <h1>National Park Survey</h1>
             <form method="post" enctype="multipart/form-data">
                 {% crispy form %}
-                <div class="row">
-                    <button type="submit" value="submit" class="btn btn-success ml-auto">Next</button>
+                <div class="row pt-5 pb-5">
+                    <button type="submit" value="submit" class="btn btn-success ml-auto">Submit</button>
                 </div>
             </form>
         </div>

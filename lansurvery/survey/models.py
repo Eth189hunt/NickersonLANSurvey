@@ -1,4 +1,5 @@
 import logging
+from functools import partialmethod
 
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -9,6 +10,8 @@ from django.forms import (
     RadioSelect,
     TypedChoiceField,
 )
+from django.utils.encoding import force_str
+from django.utils.hashable import make_hashable
 
 logger = logging.getLogger(__name__)
 
@@ -103,6 +106,21 @@ class MultipleChoiceField(models.CharField):
         total = total * 2
         return total
 
+    def contribute_to_class(self, cls, name, private_only=False):
+        """
+        This adds the get_FIELD_display_custom method to the model.
+        For displaying the multiple choices.
+        """
+        super().contribute_to_class(cls, name, private_only)
+        if hasattr(cls, "_get_FIELD_display_custom"):
+            if self.choices is not None:
+                if "get_%s_display_custom" % self.name not in cls.__dict__:
+                    setattr(
+                        cls,
+                        "get_%s_display_custom" % self.name,
+                        partialmethod(cls._get_FIELD_display_custom, field=self),
+                    )
+
 
 class CheckBoxSelectOther(MultipleChoiceField):
     def formfield(self, **kwargs):
@@ -128,11 +146,11 @@ class RadioSelect(models.CharField):
 
 class NationalParkSatisfactionBehavior(models.Model):
     class Ages(models.TextChoices):
-        AGE_18_24 = "1", "18-24"
-        AGE_25_34 = "2", "25-34"
-        AGE_35_44 = "3", "35-44"
-        AGE_45_54 = "4", "45-54"
-        AGE_55_64 = "5", "55-64"
+        AGE_18_24 = "1", "18 - 24"
+        AGE_25_34 = "2", "25 - 34"
+        AGE_35_44 = "3", "35 - 44"
+        AGE_45_54 = "4", "45 - 54"
+        AGE_55_64 = "5", "55 - 64"
         AGE_65_PLUS = "6", "65 or older"
 
     q1 = RadioSelect(
@@ -268,7 +286,7 @@ class NationalParkSatisfactionBehavior(models.Model):
         choices=One_two_three.choices,
         blank=False,
         null=True,
-        verbose_name="To visit National Parks, National Monuments, or National Historic Sites",
+        verbose_name="To visit National Parks, National Monuments, or National Historic Sites.",
     )
     q11_2 = RadioSelect(
         max_length=1,
@@ -345,7 +363,7 @@ class NationalParkSatisfactionBehavior(models.Model):
 
     class Parks_Places(models.TextChoices):
         ARCHES_NATIONAL_PARK = "A", "Arches National Park"
-        BRYCE_CANYON_NATIONAL_PARK = "B", "Bryce Canyon National Park"
+        BRYCE_CANYON_NATIONAL_PARK = "B", "Bryce Canyon National park"
         CANYONLANDS_NATIONAL_PARK = "C", "Canyonlands National Park"
         CAPITOL_REEF_NATIONAL_PARK = "CR", "Capitol Reef National Park"
         ZION_NATIONAL_PARK = "Z", "Zion National Park"
@@ -1398,3 +1416,19 @@ class NationalParkSatisfactionBehavior(models.Model):
         null=True,
         verbose_name="They make me feel better physically and/or mentally.",
     )
+
+    def _get_FIELD_display_custom(self, field):
+        """
+        This is a custom field to display the many checkbox fields in a easy way
+        It takes the list of selected values and returns the display values
+        """
+        values = getattr(self, field.attname)
+        choices_dict = dict(make_hashable(field.flatchoices))
+        display_values = []
+        for value in values:
+            # force_str() to coerce lazy strings.
+            display_value = force_str(
+                choices_dict.get(make_hashable(value), value), strings_only=True
+            )
+            display_values.append(display_value)
+        return ",".join(display_values)

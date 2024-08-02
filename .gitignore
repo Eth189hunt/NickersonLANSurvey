@@ -9,3 +9,4 @@ db.sqlite3
 lansurvery/lansurvery/__pycache__/settings.cpython-311.pyc
 /static/
 import.csv
+.env

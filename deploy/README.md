@@ -10,6 +10,14 @@ su survey
 cd ~
 
 copy in project multiple ways ssh key deploy or copy files with scp
+copy .env.example to lansurvy/.env and fill in the blanks(where manage.py is)
+django-admin shell
+from django.core.management.utils import get_random_secret_key  
+get_random_secret_key()
+exit()
+
+copy this to SECRET_KEY in .env
+
 
 ## Create a virtual environment
 cd lansurvey

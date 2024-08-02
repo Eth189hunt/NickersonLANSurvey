@@ -6,6 +6,10 @@ Then disable ssh for extra security.
 systemctl disable ssh
 systemctl stop ssh
 
+## Hotspot/Wifi
+sudo nmcli device wifi hotspot ssid <hotspot name> password <hotspot password> ifname wlan0
+sudo nmcli connection modify <hotspot UUID> connection.autoconnect yes
+
 # Copy data in export method
 Login to pi on pilan
 sudo su survey

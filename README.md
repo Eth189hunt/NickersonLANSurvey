@@ -18,7 +18,7 @@ cd ~
 cd NickersonLANSurvey/lansurvey
 python3 manage.py export_survey
 ctl + d or logout of user
-sudo mv /home/survery/NickersonLANSurvey/lansurvey/import.csv .
+sudo mv /home/survey/NickersonLANSurvey/lansurvey/import.csv .
 sudo systemctl start ssh
 
 From another computer
